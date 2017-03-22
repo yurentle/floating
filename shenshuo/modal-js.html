@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .popUpMenu {
+        position: absolute;
+        top: 0;
+        display: none;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(128, 128, 128, 0.83);
+    }
+    
+    .menu {
+        margin: 10px;
+        width: 150px;
+        height: 50px;
+        background-color: blue;
+        border-radius: 6px;
+        text-align: center;
+        padding-top: 1px;
+    }
+    
+    .menu>p {
+        display: block;
+        color: #fff;
+    }
+    
+    .title {
+        width: 600px;
+        margin: 20px auto;
+        /*display: none;*/
+        background-color: #fff;
+        padding: 10px 0;
+        position: relative;
+    }
+    
+    .title>p {
+        box-sizing: border-box;
+        border-bottom: 1px solid grey;
+        border-top: 1px solid grey;
+        padding: 10px;
+    }
+    
+    h2 {
+        margin-left: 10px;
+    }
+    
+    span {
+        position: absolute;
+        top: 5%;
+        left: 95%;
+    }
+    
+    span:hover {
+        cursor: pointer;
+        box-shadow: 0 0 2px grey;
+    }
+    
+    button:hover {
+        cursor: pointer;
+    }
+    
+    .close {
+        height: 30px;
+        position: relative;
+        left: 75%;
+    }
+    
+    .save {
+        background-color: blue;
+        height: 30px;
+        padding: 4px;
+        color: #fff;
+        position: relative;
+        left: 74%;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <p>launch modal</p>
+    </div>
+ <!--    <div class="popUpMenu">
+        <div class="title">
+            <h2>Modal title</h2>
+            <span>X</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, odio dignissimos voluptate consequatur quos molestias necessitatibus nisi sit optio eius maiores qui quo incidunt cumque? Blanditiis obcaecati ex vitae corporis.</p>
+            <button class="close">Close</button>
+            <button class="save">save changes</button>
+        </div>
+    </div> -->
+    <script>
+    let body = document.getElementsByTagName("body")[0];
+    let popUpMenu = document.createElement("div");
+    let script = document.getElementsByTagName("script")[0];
+    body.insertBefore(popUpMenu,script);
+    let title = document.createElement("div");
+    popUpMenu.appendChild(title);
+    popUpMenu.className += "popUpMenu";
+    title.className += "title";
+
+    let h2 = document.createElement("h2");
+    let span = document.createElement("span");
+    let p = document.createElement("p");
+    let button1 = document.createElement("button");
+    let button2 = document.createElement("button");
+    button1.className += "close";
+    button2.className += "save";
+    title.appendChild(h2);
+    title.appendChild(p);
+    title.appendChild(span);
+    title.appendChild(button1);
+    title.appendChild(button2);
+
+    let h2text = document.createTextNode("Modal title");
+    h2.appendChild(h2text);
+    let spantext = document.createTextNode("X");
+    span.appendChild(spantext);
+    let ptext = document.createTextNode("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, odio dignissimos voluptate consequatur quos molestias necessitatibus nisi sit optio eius maiores qui quo incidunt cumque? Blanditiis obcaecati ex vitae corporis.");
+    p.appendChild(ptext);
+    let button1text = document.createTextNode("Close");
+    button1.appendChild(button1text);
+    let button2text = document.createTextNode("save changes");
+    button2.appendChild(button2text);
+
+
+
+
+    let menu = document.getElementsByClassName('menu')[0];
+    let popUp = document.getElementsByClassName("popUpMenu")[0];
+      menu.onclick = function(){
+        popUp.style.display = "block";
+    }
+    let array = [span,button1,button2,popUpMenu];
+    for(i=0;i<array.length;i++){
+        array[i].onclick = function(){
+            popUpMenu.style.display = "none";
+        }
+    }
+    title.onclick = function(event){
+        event.stopPropagation()
+    }
+    </script>
+</body>
+
+</html>

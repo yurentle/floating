@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .pop-up-menu{
+    	position: absolute;
+    	top:0;
+    	display: none;
+    	width: 100%;
+    	height: 100%;
+    	background-color: rgba(128, 128, 128, 0.83);
+    }
+    .menu {
+        margin: 10px;
+        width: 150px;
+        height: 50px;
+        background-color: blue;
+        border-radius: 6px;
+        text-align: center;
+        padding-top: 1px;
+    }
+    
+    .menu>p {
+        display: block;
+        color: #fff;
+    }
+    
+    .title {
+        width: 600px;
+        margin: 20px auto;
+        /*display: none;*/
+        background-color: #fff;
+        padding: 10px 0;
+        position: relative;
+    }
+    
+    .title>p {
+        box-sizing: border-box;
+        border-bottom: 1px solid grey;
+        border-top: 1px solid grey;
+        padding: 10px;
+    }
+    
+    h2 {
+        margin-left: 10px;
+    }
+    span{
+    	position: absolute;
+    	top: 5%;
+    	left: 95%;
+    }
+    span:hover{
+    	cursor: pointer;
+    	box-shadow: 0 0 2px grey;
+    }
+    button:hover{
+    	cursor: pointer;
+    }
+    .close {
+        height: 30px;
+        position: relative;
+        left: 75%;
+    }
+    
+    .save {
+        background-color: blue;
+        height: 30px;
+        padding: 4px;
+        color: #fff;
+        position: relative;
+        left: 74%;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <p>launch modal</p>
+    </div>
+    <div class="pop-up-menu">
+        <div class="title">
+            <h2>Modal title</h2>
+            <span>X</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, odio dignissimos voluptate consequatur quos molestias necessitatibus nisi sit optio eius maiores qui quo incidunt cumque? Blanditiis obcaecati ex vitae corporis.</p>
+            <button class="close">Close</button>
+            <button class="save">save changes</button>
+        </div>
+    </div>
+
+
+
+    <script src="jquery-3.1.1.min.js"></script>
+    <script>
+   
+    $(document).ready(function() {
+        $(".menu").click(function(event) {
+        	// event.stopPropagation();
+            $(".title").fadeIn("slow");
+            $(".pop-up-menu").css("display", "block");
+            
+        })
+        $(".pop-up-menu,button,span").click(function() {
+            $(".title").fadeOut("slow");
+            $(".pop-up-menu").css("display", "none");
+            
+
+        })
+       
+            $(".title").click(function(event){
+            	event.stopPropagation()
+            })
+       
+
+
+    })
+    </script>
+</body>
+
+</html>

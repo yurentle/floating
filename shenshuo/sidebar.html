@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    ul {
+        padding: 0;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    .global {
+        position: relative;
+    }
+    
+    .header {
+        background-color: #00372F;
+        padding: 4px 10px;
+    }
+    
+    .main>img {
+        width: 100%;
+    }
+    
+    .sidemenu {
+        width: 20%;
+        height: 100%;
+        position: absolute;
+        left: -40px;
+        background-color: #00372F;
+        /* display: none;*/
+    }
+    
+    .side {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.38);
+        position: absolute;
+        top: 0;
+        display: none;
+    }
+    
+    .sidemenu>img {
+        width: 100%;
+    }
+    
+    .sidemenu>h2 {
+        margin: 10px 0;
+        padding: 10px;
+        color: #fff;
+        font-size: 100%;
+        text-align: center;
+        border-bottom: 1px solid grey;
+    }
+    
+    .sidemenu>ul>li {
+        padding: 10px;
+        text-align: left;
+        padding-left: 30%;
+        color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="global">
+        <div class="header">
+            <img src="images/menu.png" alt="">
+        </div>
+        <div class="main">
+            <img src="images/scenery.png" alt="">
+        </div>
+        <div class="side">
+            <div class="sidemenu">
+                <img src="images/scenery.png" alt="">
+                <h2>Quae ad, vel pariatur non voluptates nam quaerat</h2>
+                <ul>
+                    <li>Travels</li>
+                    <li>Photography</li>
+                    <li>Videos</li>
+                    <li>Environment</li>
+                    <li>About</li>
+                    <li>Contact us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script>
+    function clickme(event) {
+        event.stopPropagation()
+    }
+
+    $(document).ready(function() {
+        $(".header>img").click(function() {
+            $(".side").css("display", "block")
+        })
+        $(".side").click(function() {
+            $(".side").css("display", "none")
+        })
+        $(function() {
+            $(".sidemenu").click(clickme)
+        })
+
+    })
+    </script>
+</body>
+
+</html>
